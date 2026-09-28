@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff8f0">
+  <meta name="description" content="المارد لشراء المكيفات بالقصيم — شراء مكيفات مستعملة بسعر عادل وخدمة سريعة.">
+  <title>المارد لشراء المكيفات بالقصيم | شراء مكيفات مستعملة</title>
+  <style>
+    :root {
+      --ink: #1d2940;
+      --muted: #69758b;
+      --cream: #fff9f0;
+      --paper: #ffffff;
+      --coral: #ef715c;
+      --coral-dark: #d9534f;
+      --teal: #19a19a;
+      --teal-dark: #087e7d;
+      --yellow: #ffc94d;
+      --lavender: #eee9ff;
+      --line: rgba(29, 41, 64, 0.1);
+      --shadow: 0 24px 65px rgba(36, 49, 71, 0.12);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 4% 8%, rgba(255, 201, 77, .22) 0 8rem, transparent 8.1rem),
+        radial-gradient(circle at 94% 38%, rgba(25, 161, 154, .14) 0 10rem, transparent 10.1rem),
+        var(--cream);
+      font-family: Tahoma, Arial, sans-serif;
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .page-shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 24px 0 12px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 1.04rem;
+      font-weight: 800;
+    }
+    .brand-name { line-height: 1.25; }
+    .brand-name small {
+      display: block;
+      color: var(--coral-dark);
+      font-size: .7em;
+      font-weight: 900;
+    }
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      color: var(--ink);
+      background: var(--yellow);
+      border-radius: 13px 13px 13px 4px;
+      box-shadow: 4px 4px 0 var(--ink);
+      font-size: 1.35rem;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 700;
+    }
+    .nav a { transition: color .2s ease; }
+    .nav a:hover { color: var(--coral-dark); }
+    .nav-cta {
+      padding: 9px 17px;
+      color: #fff !important;
+      background: var(--ink);
+      border-radius: 999px;
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.06fr) minmax(310px, .94fr);
+      align-items: center;
+      gap: clamp(30px, 6vw, 88px);
+      min-height: 570px;
+      padding: 62px clamp(26px, 6vw, 74px);
+      overflow: hidden;
+      color: #fff;
+      background: var(--teal);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+    .hero::before {
+      position: absolute;
+      z-index: -1;
+      width: 460px;
+      height: 460px;
+      content: "";
+      background: var(--teal-dark);
+      border-radius: 50%;
+      left: -160px;
+      top: -195px;
+    }
+    .hero::after {
+      position: absolute;
+      z-index: -1;
+      width: 210px;
+      height: 210px;
+      content: "";
+      background: var(--yellow);
+      border-radius: 50%;
+      right: -78px;
+      bottom: -85px;
+    }
+    .hero-copy { max-width: 600px; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 19px;
+      color: #fff5cb;
+      font-size: .86rem;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .eyebrow::before {
+      width: 30px;
+      height: 3px;
+      content: "";
+      background: var(--yellow);
+      border-radius: 10px;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 590px;
+      margin-bottom: 19px;
+      color: #fff;
+      font-size: clamp(2.35rem, 5.3vw, 4.7rem);
+      line-height: 1.08;
+      letter-spacing: -.045em;
+    }
+    .hero-title-accent { display: inline-block; color: var(--yellow); }
+    .hero-copy > p {
+      max-width: 520px;
+      margin-bottom: 29px;
+      color: rgba(255,255,255,.86);
+      font-size: 1.06rem;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 52px;
+      padding: 0 22px;
+      border: 0;
+      border-radius: 15px;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .button:hover { transform: translateY(-3px); }
+    .button-primary {
+      color: var(--ink);
+      background: var(--yellow);
+      box-shadow: 0 9px 0 rgba(15, 76, 78, .2);
+    }
+    .button-light { color: var(--teal-dark); background: #fff; }
+    .button-outline {
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.35);
+      background: rgba(255,255,255,.1);
+    }
+    .hero-note {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 30px;
+      color: rgba(255,255,255,.75);
+      font-size: .83rem;
+    }
+    .hero-note span {
+      display: grid;
+      width: 22px;
+      height: 22px;
+      place-items: center;
+      color: var(--teal-dark);
+      background: #d9f5e9;
+      border-radius: 50%;
+      font-size: .75rem;
+      font-weight: 900;
+    }
+
+    .flyer-card {
+      position: relative;
+      padding: 25px;
+      color: var(--ink);
+      background: var(--paper);
+      border: 5px solid rgba(255,255,255,.32);
+      border-radius: 28px;
+      box-shadow: 0 18px 45px rgba(4, 67, 72, .21);
+      transform: rotate(2.1deg);
+    }
+    .flyer-card::before {
+      position: absolute;
+      top: 17px;
+      left: 19px;
+      width: 58px;
+      height: 16px;
+      content: "";
+      background: var(--coral);
+      border-radius: 4px;
+      transform: rotate(-8deg);
+    }
+    .card-kicker {
+      margin: 11px 0 5px;
+      color: var(--coral-dark);
+      font-size: .77rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+    }
+    .flyer-card h2 {
+      margin-bottom: 13px;
+      font-size: clamp(1.6rem, 3vw, 2.35rem);
+      line-height: 1.15;
+    }
+    .location {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 22px;
+      padding: 6px 11px;
+      color: var(--teal-dark);
+      background: #e4faf4;
+      border-radius: 99px;
+      font-size: .82rem;
+      font-weight: 800;
+    }
+    .quick-list {
+      display: grid;
+      gap: 11px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .quick-list li {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: .91rem;
+      font-weight: 700;
+    }
+    .check {
+      display: grid;
+      flex: 0 0 27px;
+      width: 27px;
+      height: 27px;
+      place-items: center;
+      color: var(--teal-dark);
+      background: #e5f7f1;
+      border-radius: 9px;
+      font-weight: 900;
+    }
+    .card-divider { height: 1px; margin: 20px 0 17px; background: var(--line); }
+    .card-contact {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+    .card-contact small { display: block; color: var(--muted); font-size: .72rem; }
+    .phone-number { display: block; direction: ltr; font-size: 1.18rem; font-weight: 900; }
+    .mini-wa {
+      display: grid;
+      width: 43px;
+      height: 43px;
+      place-items: center;
+      color: #fff;
+      background: #25d366;
+      border-radius: 14px;
+      font-weight: 900;
+      font-size: 1.2rem;
+    }
+
+    .section { padding: 100px 0 0; }
+    .section-heading { max-width: 600px; margin-bottom: 33px; }
+    .section-label {
+      display: inline-block;
+      margin-bottom: 9px;
+      color: var(--coral-dark);
+      font-size: .82rem;
+      font-weight: 900;
+      letter-spacing: .05em;
+    }
+    .section-heading h2 {
+      margin-bottom: 11px;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1.15;
+    }
+    .section-heading p { margin-bottom: 0; color: var(--muted); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+    .service-card {
+      min-height: 182px;
+      padding: 22px 19px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(36,49,71,.04);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .service-card:hover { transform: translateY(-5px); box-shadow: 0 15px 28px rgba(36,49,71,.1); }
+    .service-icon {
+      display: grid;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 17px;
+      place-items: center;
+      background: var(--lavender);
+      border-radius: 15px;
+      font-size: 1.4rem;
+    }
+    .service-card:nth-child(2) .service-icon { background: #fff0dd; }
+    .service-card:nth-child(3) .service-icon { background: #e3f7f2; }
+    .service-card:nth-child(4) .service-icon { background: #ffe9e8; }
+    .service-card h3 { margin-bottom: 5px; font-size: 1.03rem; }
+    .service-card p { margin-bottom: 0; color: var(--muted); font-size: .82rem; line-height: 1.65; }
+
+    .reviews-section { padding-top: 94px; }
+    .reviews-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 25px;
+      margin-bottom: 28px;
+    }
+    .reviews-header .section-heading { margin-bottom: 0; }
+    .rating-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+      padding: 10px 14px;
+      color: #775100;
+      background: #fff1c6;
+      border: 1px solid #f8d879;
+      border-radius: 999px;
+      font-size: .85rem;
+      font-weight: 900;
+    }
+    .rating-stars { color: #e49a00; letter-spacing: 1px; }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+    .review-card {
+      position: relative;
+      padding: 23px 21px 21px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 21px;
+      box-shadow: 0 9px 25px rgba(36,49,71,.045);
+    }
+    .review-card::before {
+      position: absolute;
+      top: 14px;
+      left: 19px;
+      content: "“";
+      color: var(--coral);
+      font-family: Georgia, serif;
+      font-size: 3.8rem;
+      line-height: .8;
+      opacity: .55;
+    }
+    .review-stars { margin-bottom: 11px; color: #e9a100; font-size: .86rem; letter-spacing: 2px; }
+    .review-card blockquote {
+      min-height: 75px;
+      margin: 0 0 17px;
+      color: var(--ink);
+      font-size: .9rem;
+      font-weight: 700;
+      line-height: 1.8;
+    }
+    .review-person {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--muted);
+      font-size: .75rem;
+      font-weight: 800;
+    }
+    .review-avatar {
+      display: grid;
+      width: 31px;
+      height: 31px;
+      place-items: center;
+      color: var(--teal-dark);
+      background: #def5ed;
+      border-radius: 50%;
+      font-size: .78rem;
+    }
+
+    .about-strip {
+      display: grid;
+      grid-template-columns: .75fr 1.25fr;
+      gap: 52px;
+      align-items: center;
+      padding: 83px 0 0;
+    }
+    .about-stamp {
+      display: grid;
+      width: min(260px, 100%);
+      aspect-ratio: 1;
+      place-items: center;
+      margin: 0 auto;
+      color: var(--ink);
+      background: var(--yellow);
+      border: 12px solid #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px var(--yellow), 11px 14px 0 var(--coral);
+      text-align: center;
+      transform: rotate(-7deg);
+    }
+    .about-stamp strong { display: block; font-size: 2.1rem; line-height: 1.05; }
+    .about-stamp span { display: block; margin-top: 8px; font-size: .83rem; font-weight: 800; }
+    .about-copy h2 { margin-bottom: 14px; font-size: clamp(1.8rem, 4vw, 2.7rem); line-height: 1.15; }
+    .about-copy p { color: var(--muted); }
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px 20px;
+      margin-top: 24px;
+      padding: 0;
+      list-style: none;
+    }
+    .benefits li { display: flex; align-items: center; gap: 9px; font-size: .9rem; font-weight: 800; }
+    .benefits li::before {
+      display: grid;
+      flex: 0 0 22px;
+      width: 22px;
+      height: 22px;
+      place-items: center;
+      content: "✓";
+      color: #fff;
+      background: var(--coral);
+      border-radius: 50%;
+      font-size: .72rem;
+    }
+
+    .contact-panel {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 28px;
+      margin: 100px 0 0;
+      padding: 34px clamp(23px, 5vw, 52px);
+      color: #fff;
+      background: var(--ink);
+      border-radius: 26px;
+    }
+    .contact-panel h2 { margin-bottom: 7px; color: #fff; font-size: clamp(1.55rem, 3vw, 2.2rem); line-height: 1.2; }
+    .contact-panel p { margin-bottom: 0; color: rgba(255,255,255,.68); font-size: .9rem; }
+    .contact-actions { display: flex; flex-wrap: wrap; gap: 10px; flex-shrink: 0; }
+    .contact-actions .button { min-height: 49px; }
+    .button-whatsapp { color: #fff; background: #25d366; }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 30px 0 34px;
+      color: var(--muted);
+      font-size: .77rem;
+    }
+    footer p { margin: 0; }
+    .designer {
+      color: var(--ink);
+      font-weight: 800;
+    }
+    .designer a { color: var(--coral-dark); text-decoration: underline; text-underline-offset: 3px; }
+
+    .floating-whatsapp {
+      position: fixed;
+      z-index: 10;
+      left: 21px;
+      bottom: 21px;
+      display: grid;
+      width: 60px;
+      height: 60px;
+      place-items: center;
+      color: #fff;
+      background: #25d366;
+      border: 4px solid #fff;
+      border-radius: 50%;
+      box-shadow: 0 8px 22px rgba(37, 211, 102, .4);
+      font-size: 1.5rem;
+      transition: transform .2s ease;
+    }
+    .floating-whatsapp:hover { transform: scale(1.09); }
+    .floating-whatsapp::after {
+      position: absolute;
+      top: -4px;
+      right: -3px;
+      width: 10px;
+      height: 10px;
+      content: "";
+      background: var(--coral);
+      border: 2px solid #fff;
+      border-radius: 50%;
+    }
+
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr; min-height: 0; padding: 49px 27px 42px; }
+      .hero-copy { max-width: none; }
+      .flyer-card { max-width: 430px; width: 100%; margin: 17px auto 0; transform: rotate(1deg); }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .review-card blockquote { min-height: 0; }
+      .reviews-header { align-items: flex-start; flex-direction: column; }
+      .about-strip { grid-template-columns: 1fr; gap: 40px; }
+      .about-stamp { width: 210px; }
+      .about-copy { text-align: center; }
+      .benefits { text-align: right; }
+      .contact-panel { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 560px) {
+      .page-shell { width: min(100% - 22px, 500px); }
+      .topbar { padding-top: 17px; }
+      .nav { gap: 10px; font-size: .76rem; }
+      .nav a:not(.nav-cta) { display: none; }
+      .nav-cta { padding: 8px 12px; }
+      .brand { font-size: .9rem; }
+      .brand-mark { width: 36px; height: 36px; font-size: 1.1rem; }
+      .hero { padding: 42px 21px 30px; border-radius: 25px; }
+      h1 { font-size: clamp(2.4rem, 13vw, 3.5rem); }
+      .hero-copy > p { font-size: .95rem; }
+      .button { width: 100%; }
+      .hero-actions { align-items: stretch; }
+      .hero-note { margin-top: 21px; font-size: .75rem; }
+      .flyer-card { padding: 22px 18px; border-width: 4px; }
+      .services-grid { gap: 10px; }
+      .service-card { min-height: 170px; padding: 17px 14px; }
+      .service-card h3 { font-size: .92rem; }
+      .service-card p { font-size: .75rem; }
+      .section { padding-top: 68px; }
+      .reviews-section { padding-top: 67px; }
+      .about-strip { padding-top: 62px; }
+      .benefits { grid-template-columns: 1fr; gap: 10px; }
+      .contact-panel { margin-top: 70px; padding: 28px 22px; border-radius: 22px; }
+      .contact-actions { width: 100%; }
+      .contact-actions .button { width: 100%; }
+      footer { align-items: flex-start; flex-direction: column; padding-bottom: 29px; }
+      .floating-whatsapp { left: 15px; bottom: 15px; width: 55px; height: 55px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="المارد لشراء المكيفات بالقصيم">
+        <span class="brand-mark" aria-hidden="true">↺</span>
+        <span class="brand-name">المارد لشراء<br><small>المكيفات بالقصيم</small></span>
+      </a>
+      <nav class="nav" aria-label="التنقل الرئيسي">
+        <a href="#services">خدماتنا</a>
+        <a href="#about">من نحن</a>
+        <a class="nav-cta" href="#contact">تواصل معنا</a>
+      </nav>
+    </header>
+
+    <main id="home">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">شراء مكيفات مستعملة</p>
+          <h1 id="hero-title">عندك مكيف<br><span class="hero-title-accent">مستعمل؟</span></h1>
+          <p>المارد يشتري المكيفات المستعملة في القصيم بسعر عادل وخدمة سريعة. أرسل الصور، ودع الباقي علينا.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="tel:0540266592">☎ اتصل الآن</a>
+            <a class="button button-outline" href="https://wa.me/966540266592?text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%D8%8C%20%D9%84%D8%AF%D9%8A%20%D9%85%D8%B3%D8%AA%D8%B9%D9%85%20%D9%84%D9%84%D8%A8%D9%8A%D8%B9" target="_blank" rel="noopener">واتساب ←</a>
+          </div>
+          <div class="hero-note"><span>✓</span> نشتري مكيفات سبليت وشباك ومركزي</div>
+        </div>
+
+        <aside class="flyer-card" aria-label="ملخص الخدمة">
+          <p class="card-kicker">المارد لشراء المكيفات</p>
+          <h2>نشتري مكيفك<br>بكل سهولة</h2>
+          <div class="location">⌖ القصيم والمناطق القريبة</div>
+          <ul class="quick-list">
+            <li><span class="check">✓</span> سعر مناسب وتقييم واضح</li>
+            <li><span class="check">✓</span> معاينة واستلام سريع</li>
+            <li><span class="check">✓</span> تعامل راقٍ وموعد ملتزم</li>
+          </ul>
+          <div class="card-divider"></div>
+          <div class="card-contact">
+            <div>
+              <small>للاستفسار والحجز</small>
+              <a class="phone-number" href="tel:0540266592">054 026 6592</a>
+            </div>
+            <a class="mini-wa" href="https://wa.me/966540266592" target="_blank" rel="noopener" aria-label="تواصل معنا عبر واتساب">WA</a>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section" id="services" aria-labelledby="services-title">
+        <div class="section-heading">
+          <span class="section-label">خدماتنا</span>
+          <h2 id="services-title">نشتري مكيفاتك المستعملة</h2>
+          <p>أيًّا كان النوع أو الحجم، أرسل لنا الصور وسنرد عليك بالتفاصيل.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">❄️</div>
+            <h3>مكيفات سبليت</h3>
+            <p>نشتري مكيفات السبليت المستعملة بمختلف المقاسات.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">▣</div>
+            <h3>مكيفات شباك</h3>
+            <p>شراء مكيفات الشباك المستعملة بحالة جيدة.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">◫</div>
+            <h3>مكيفات مركزية</h3>
+            <p>نستقبل عروض المكيفات المركزية والتجارية.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">✦</div>
+            <h3>مكيفات متنقلة</h3>
+            <p>حلول تبريد متنقلة وأجهزة مستعملة متنوعة.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="about-strip" id="about" aria-labelledby="about-title">
+        <div class="about-stamp" aria-label="خدمة موثوقة">
+          <div><strong>سهل<br>وسريع</strong><span>من بيتك إلى البيع</span></div>
+        </div>
+        <div class="about-copy">
+          <span class="section-label">من نحن</span>
+          <h2 id="about-title">المارد… اختيارك الأسهل لبيع مكيفك.</h2>
+          <p>نحن متخصصون في شراء المكيفات المستعملة بالقصيم. نحرص على تقييم واضح، تواصل مباشر، واستلام منسق يوفّر عليك الوقت والجهد.</p>
+          <ul class="benefits">
+            <li>متخصصون بالمكيفات</li>
+            <li>سعر عادل</li>
+            <li>رد سريع</li>
+            <li>استلام منسق</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="reviews-section" id="reviews" aria-labelledby="reviews-title">
+        <div class="reviews-header">
+          <div class="section-heading">
+            <span class="section-label">تجارب تهمنا</span>
+            <h2 id="reviews-title">ماذا قال عملاؤنا؟</h2>
+            <p>ثقة عملائنا هي أفضل ما نعتز به بعد كل عملية شراء.</p>
+          </div>
+          <div class="rating-pill"><span class="rating-stars">★★★★★</span> تقييمات طيبة من عملائنا</div>
+        </div>
+        <div class="reviews-grid">
+          <article class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <blockquote>“تواصلوا معي بسرعة، وكان التقييم واضحًا والاستلام في الموعد. تعامل ممتاز.”</blockquote>
+            <div class="review-person"><span class="review-avatar">أ</span> عميل من بريدة</div>
+          </article>
+          <article class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <blockquote>“أرسلت صور المكيف على الواتساب وخلصت الإجراءات بسهولة. أشكر المارد على المصداقية.”</blockquote>
+            <div class="review-person"><span class="review-avatar">م</span> عميل من عنيزة</div>
+          </article>
+          <article class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <blockquote>“خدمة سريعة ومحترمة، والسعر كان مناسبًا. تجربة طيبة وأنصح بالتعامل معهم.”</blockquote>
+            <div class="review-person"><span class="review-avatar">س</span> عميل من القصيم</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="contact-panel" id="contact" aria-labelledby="contact-title">
+        <div>
+          <h2 id="contact-title">جاهز تبيع مكيفك؟</h2>
+          <p>اتصل أو أرسل صور المكيف على واتساب الآن.</p>
+        </div>
+        <div class="contact-actions">
+          <a class="button button-whatsapp" href="https://wa.me/966540266592?text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A8%D9%8A%D8%B9%20%D9%85%D8%B3%D8%AA%D8%B9%D9%85" target="_blank" rel="noopener">واتساب</a>
+          <a class="button button-light" href="tel:0540266592">054 026 6592</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 المارد لشراء المكيفات بالقصيم. جميع الحقوق محفوظة.</p>
+      <p class="designer">تم التصميم بواسطة <a href="https://wa.me/201029095046" target="_blank" rel="noopener">م نجوي ابراهيم</a></p>
+    </footer>
+  </div>
+
+  <a class="floating-whatsapp" href="https://wa.me/966540266592" target="_blank" rel="noopener" aria-label="راسلنا على واتساب">WA</a>
+</body>
+</html>
